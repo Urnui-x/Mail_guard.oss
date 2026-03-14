@@ -1,0 +1,26 @@
+{
+    "name": "mailguard/mailguard-sdk",
+    "description": "Official PHP SDK for MailGuard OSS",
+    "type": "library",
+    "license": "MIT",
+    "version": "1.0.0",
+    "keywords": ["mailguard", "otp", "email", "verification"],
+    "autoload": {
+        "psr-4": {
+            "MailGuard\&quot;: "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.0",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "authors": [
+        {
+            "name": "MailGuard OSS"
+        }
+    ]
+}
