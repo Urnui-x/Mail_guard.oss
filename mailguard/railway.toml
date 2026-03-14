@@ -1,0 +1,31 @@
+# Railway configuration for MailGuard OSS
+
+[build]
+builder = "dockerfile"
+
+[[services]]
+name = "api"
+dockerfile = "apps/api/Dockerfile"
+
+[services.variables]
+NODE_ENV = "production"
+PORT = "3000"
+
+[services.healthcheck]
+path = "/health"
+interval = 30
+timeout = 10
+
+[[services]]
+name = "worker"
+dockerfile = "apps/worker/Dockerfile"
+
+[services.variables]
+NODE_ENV = "production"
+
+[[services]]
+name = "bot"
+dockerfile = "apps/bot/Dockerfile"
+
+[services.variables]
+NODE_ENV = "production"
