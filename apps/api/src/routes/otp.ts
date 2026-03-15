@@ -16,7 +16,7 @@ import {
 } from '@mailguard/smtp';
 import { Queue } from 'bullmq';
 import { sendOtpSchema, verifyOtpSchema } from '../schemas.js';
-import { authMiddleware, otpSendRateLimitMiddleware } from '../middleware/index.js';
+import { authMiddleware, apiRateLimitMiddleware, otpSendRateLimitMiddleware } from '../middleware/index.js';
 
 // BullMQ queue for email jobs
 let emailQueue: Queue | null = null;
@@ -223,7 +223,7 @@ export async function otpRoutes(fastify: FastifyInstance): Promise<void> {
   
   // POST /api/v1/otp/verify
   fastify.post('/verify', {
-    preHandler: [authMiddleware],
+    preHandler: [authMiddleware, apiRateLimitMiddleware],
     schema: {
       body: {
         type: 'object',
